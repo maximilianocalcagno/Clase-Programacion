@@ -12,7 +12,7 @@ async function verPersonas(req, res) {
         </div>
         `
     }
-    res.send(personasHtml);    
+    res.json(personas);    
 };
 
 async function crearPersona(req, res){
@@ -25,6 +25,11 @@ async function crearPersona(req, res){
     res.json("persona creada");
 }
 
+async function eliminarPersona(req, res){
+    await Persona.findByIdAndDelete(req.params.id);
+    res.json("Persona eliminada");
+}
+
 module.exports = {
-    verPersonas, crearPersona
+    verPersonas, crearPersona, eliminarPersona
 }
