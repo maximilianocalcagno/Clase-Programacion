@@ -8,4 +8,17 @@ btnEnviar.addEventListener("click", () => {
     const apellido = inputApellido.value;
     const edad = inputEdad.value;
     
+    let persona = {
+        nombre: nombre,
+        apellido: apellido,
+        edad: edad
+    }
+
+    fetch("http://localhost:3000/personas", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(persona)
+    })
 })
